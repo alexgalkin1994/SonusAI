@@ -1,0 +1,7 @@
+{
+  "name": "sonusai",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}

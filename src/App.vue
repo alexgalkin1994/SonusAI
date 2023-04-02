@@ -1,19 +1,13 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import type RecordDreamView from './views/RecordDreamView.vue'
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <!-- <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav> -->
-    </div>
-  </header>
-
-  <RouterView />
+  <router-view v-slot="{ Component, route }">
+    <transition :name="route.meta.transition">
+      <div :key="route.name">
+        <component :is="Component" />
+      </div>
+    </transition>
+  </router-view>
 </template>
 
-<style scoped></style>
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+</script>

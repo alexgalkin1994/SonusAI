@@ -1,0 +1,39 @@
+Summary,Issue Type,Epic Link,Description,Priority
+Set up Vue 3 project,Task,Project Setup,Set up the project using Vue CLI or Vite, and configure the initial project structure.,High
+Set up Node.js/Express backend server,Task,Project Setup,Set up and configure the backend server using Node.js and Express, including routes and middleware.,High
+Implement user registration and login functionality,Task,User Authentication and Account Management,Develop user authentication features, including registration, login, and session management.,Medium
+Implement password reset and recovery,Task,User Authentication and Account Management,Create functionality for users to reset and recover their passwords through email.,Medium
+Create user profile management features,Task,User Authentication and Account Management,Develop features that allow users to view and edit their profile information.,Medium
+Create InputForm component,Task,Dream Interpretation Input Form,Design and implement the InputForm component for users to input their dream description, context, and emotions.,High
+Implement input validation and error handling,Task,Dream Interpretation Input Form,Add input validation and error handling to ensure users provide a valid dream description before submitting the form.,High
+Style input form according to UI/UX design,Task,Dream Interpretation Input Form,Apply styles and layout to the input form based on the UI/UX design.,Low
+Integrate ChatGPT API with the backend,Task,AI-Generated Dream Interpretation,Connect the backend server to the ChatGPT API to enable AI-generated dream interpretation.,High
+Create ResultsDisplay component,Task,AI-Generated Dream Interpretation,Design and implement the ResultsDisplay component to show the AI-generated dream interpretation and insights.,High
+Display AI-generated dream interpretation and insights,Task,AI-Generated Dream Interpretation,Develop functionality to display the personalized dream interpretation and additional insights in the ResultsDisplay component.,High
+Implement saving and viewing past dream interpretations,Task,Results History and Management,Create features that allow users to save and view their past dream interpretations.,High
+Implement editing and deleting dream entries,Task,Results History and Management,Develop functionality for users to edit or delete their previous dream entries.,Medium
+Create export functionality for dream history,Task,Results History and Management,Implement an option for users to export their dream history as a PDF or CSV file.,Low
+Implement search feature for dream history,Task,Search and Filter Functionality,Develop a search functionality to allow users to search their dream history by keywords, dates, or themes.,Medium
+Implement filter functionality for dream results,Task,Search and Filter Functionality,Create a filter functionality for users to sort their dream results by categories, such as recurring dreams or specific emotions.,Low
+Curate and integrate resources and articles on dream interpretation,Task,Resources and Articles,Gather a collection of resources and articles on dream interpretation and integrate them into the app.,Low
+Create a dedicated Resources component,Task,Resources and Articles,Design and implement a Resources component to display the curated articles and resources.,Low
+Implement social sharing functionality,Task,Social Sharing and Community,Develop functionality to allow users to share their dream interpretations on social media platforms.,Low
+Create in-app community features for dream discussions,Task,Social Sharing and Community,Develop community features that enable users to discuss their dreams and interpretations with others.,Low
+Generate personalized suggestions and recommendations,Task,Personalized Recommendations and Insights,Implement AI-generated suggestions for personal growth or self-discovery based on dream patterns.,Medium
+Integrate recommendations with the user's dream history,Task,Personalized Recommendations and Insights,Connect the AI-generated recommendations to the user's dream history for a personalized experience.,Low
+Implement push notifications and email reminders,Task,Notifications and Reminders,Develop push notifications and email reminders to encourage users to record their dreams regularly and stay engaged with the app.,Medium
+Configure notifications for updates and new features,Task,Notifications and Reminders,Set up notifications for informing users about new resources, features, or community events.,Low
+Ensure mobile-friendly design,Task,Responsive Design and Accessibility,Optimize the app's design for mobile devices, ensuring a responsive layout and smooth user experience.,Low
+Implement accessibility features and best practices,Task,Responsive Design and Accessibility,Apply accessibility features and best practices to ensure the app is accessible to users with disabilities.,Low
+Testing and Deployment,Epic,Plan,Test and deploy the app on various platforms, ensuring high quality and user satisfaction.,High
+Project Setup,Epic,Plan,Set up the project using Vue CLI or Vite, and configure the initial project structure.,High
+User Authentication and Account Management,Epic,Plan,Develop user authentication features, including registration, login, and session management.,Medium
+Dream Interpretation Input Form,Epic,Plan,Design and implement the InputForm component for users to input their dream description, context, and emotions.,High
+AI-Generated Dream Interpretation,Epic,Plan,Connect the backend server to the ChatGPT API to enable AI-generated dream interpretation.,High
+Results History and Management,Epic,Plan,Create features that allow users to save and view their past dream interpretations.,High
+Search and Filter Functionality,Epic,Plan,Develop a search functionality to allow users to search their dream history by keywords, dates, or themes.,Medium
+Resources and Articles,Epic,Plan,Gather a collection of resources and articles on dream interpretation and integrate them into the app.,Low
+Social Sharing and Community,Epic,Plan,Develop community features that enable users to discuss their dreams and interpretations with others.,Low
+Personalized Recommendations and Insights,Epic,Plan,Implement AI-generated suggestions for personal growth or self-discovery based on dream patterns.,Medium
+Notifications and Reminders,Epic,Plan,Develop push notifications and email reminders to encourage users to record their dreams regularly and stay engaged with the app.,Low
+Responsive Design and Accessibility,Epic,Plan,Optimize the app's design for mobile devices and apply accessibility features and best practices.,Low

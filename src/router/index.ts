@@ -1,19 +1,35 @@
-import RecordDreamView from '@/views/RecordDreamView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import OnboardingView from '@/views/OnboardingView.vue'
+import DreamJournalView from '@/views/DreamJournalView.vue'
+import DreamDetailView from '@/views/DreamDetailView.vue'
+import RecordTextView from '@/views/RecordTextView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      redirect: '/journal'
     },
     {
-      path: '/record',
-      name: 'record',
-      component: RecordDreamView
+      path: '/onboarding',
+      name: 'onboarding',
+      component: OnboardingView
+    },
+    {
+      path: '/journal',
+      name: 'journal',
+      component: DreamJournalView
+    },
+    {
+      path: '/record-text',
+      name: 'record-text',
+      component: RecordTextView
+    },
+    {
+      path: '/dream-detail/:id',
+      name: 'dream-detail',
+      component: DreamDetailView
     }
   ]
 })

@@ -1,0 +1,26 @@
+Summary,Issue Type,Priority,Description
+Set up Vue 3 project,Task,High,Set up the project using Vue CLI or Vite, and configure the initial project structure.
+Set up Node.js/Express backend server,Task,High,Set up and configure the backend server using Node.js and Express, including routes and middleware.
+Implement user registration and login functionality,Task,Medium,Develop user authentication features, including registration, login, and session management.
+Implement password reset and recovery,Task,Medium,Create functionality for users to reset and recover their passwords through email.
+Create user profile management features,Task,Medium,Develop features that allow users to view and edit their profile information.
+Create InputForm component,Task,High,Design and implement the InputForm component for users to input their dream description, context, and emotions.
+Implement input validation and error handling,Task,High,Add input validation and error handling to ensure users provide a valid dream description before submitting the form.
+Style input form according to UI/UX design,Task,Low,Apply styles and layout to the input form based on the UI/UX design.
+Integrate ChatGPT API with the backend,Task,High,Connect the backend server to the ChatGPT API to enable AI-generated dream interpretation.
+Create ResultsDisplay component,Task,High,Design and implement the ResultsDisplay component to show the AI-generated dream interpretation and insights.
+Display AI-generated dream interpretation and insights,Task,High,Develop functionality to display the personalized dream interpretation and additional insights in the ResultsDisplay component.
+Implement saving and viewing past dream interpretations,Task,High,Create features that allow users to save and view their past dream interpretations.
+Implement editing and deleting dream entries,Task,Medium,Develop functionality for users to edit or delete their previous dream entries.
+Create export functionality for dream history,Task,Low,Implement an option for users to export their dream history as a PDF or CSV file.
+Implement search feature for dream history,Task,Medium,Develop a search functionality to allow users to search their dream history by keywords, dates, or themes.
+Implement filter functionality for dream results,Task,Low,Create a filter functionality for users to sort their dream results by categories, such as recurring dreams or specific emotions.
+Curate and integrate resources and articles on dream interpretation,Task,Low,Gather a collection of resources and articles on dream interpretation and integrate them into the app.
+Create a dedicated Resources component,Task,Low,Design and implement a Resources component to display the curated articles and resources.
+Implement social sharing functionality,Task,Low,Develop functionality to allow users to share their dream interpretations on social media platforms.
+Create in-app community features for dream discussions,Task,Low,Develop community features that enable users to discuss their dreams and interpretations with others.
+Generate personalized suggestions and recommendations,Task,Medium,Implement AI-generated suggestions for personal growth or self-discovery based on dream patterns.
+Integrate recommendations with the user's dream history,Task,Low,Connect the AI-generated recommendations to the user's dream history for a personalized experience.
+Implement push notifications and email reminders,Task,Medium,Develop push notifications and email reminders to encourage users to record their dreams regularly and stay engaged with the app.
+Configure notifications for updates and new features,Task,Low,Set up notifications for informing users about new resources, features, or community events.
+Ensure mobile-friendly design,Task,Low,Optimize the app's design for mobile devices, ensuring a responsive layout and smooth user experience.
