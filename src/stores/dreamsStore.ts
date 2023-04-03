@@ -10,7 +10,11 @@ export const useDreamsStore = defineStore('dreams', {
 
   actions: {
     async fetchDreams(): Promise<Dream[] | undefined> {
-      const { data, error } = await supabase.from('dreams').select('*')
+      const {
+        data: { user }
+      } = await supabase.auth.getUser()
+
+      const { data, error } = await supabase.from('dreams').select('*').eq('user_id', user?.id)
 
       if (error) {
         console.error('Error fetching dreams:', error)
