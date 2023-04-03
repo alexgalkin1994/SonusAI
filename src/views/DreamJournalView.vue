@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen min-h-screen bg-midnight bg-cover bg-bottom bg-no-repeat py-12 px-8">
     <AppHeader title="Your Journal" :icon="IconJournal" />
-    <DreamList :dreams="dreams" class="mb-16" />
+    <DreamList :dreams="dreams.reverse()" class="mb-16" />
   </div>
   <NavBar />
 </template>

@@ -61,15 +61,35 @@ watchEffect(() => {
   dream.description = recognizedText.value
 })
 
+const seperateGPTResponse = (response) => {
+  const titleStart = response.indexOf('Title:') + 'Title:'.length
+  const interpretationStart = response.indexOf('Interpretation:') + 'Interpretation:'.length
+  const tagsStart = response.indexOf('Tags:') + 'Tags:'.length
+
+  const title = response.slice(titleStart, interpretationStart - 'Interpretation:'.length).trim()
+  const interpretation = response.slice(interpretationStart, tagsStart - 'Tags:'.length).trim()
+  const tagsString = response.slice(tagsStart).trim()
+  const tags = JSON.parse(tagsString)
+
+  return { title, interpretation, tags }
+}
+
 const saveDream = async () => {
   const {
     data: { user }
   } = await supabase.auth.getUser()
+
+  const interpretationRes = await supabase.functions.invoke('openai', {
+    body: JSON.stringify({ query: dream.description })
+  })
+
+  const { title, interpretation, tags } = seperateGPTResponse(interpretationRes.data.interpretation)
+
   const { data, error } = await supabase.from('dreams').insert({
     ...dream,
-    title: dream.description.substring(0, 10),
-    tags: [],
-    interpretation: '',
+    title: title,
+    tags: tags,
+    interpretation: interpretation,
     moods: ['sad'],
     user_id: user?.id
   })
