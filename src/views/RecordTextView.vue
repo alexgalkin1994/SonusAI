@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen min-h-screen bg-midnight text-white py-12 px-8">
     <AppHeader title="Record Your Dream" />
-    <form class="dream-form" @submit.prevent="saveDream">
+    <form class="dream-form" @submit.prevent>
       <textarea
         id="dream-description"
         v-model="dream.description"
@@ -12,9 +12,7 @@
         <IconMic /> {{ recognitionActive ? 'Stop' : 'Start' }} Voice Input
       </button>
 
-      {{ imin }}
-
-      {{ recognizedText }}
+      recognized text: {{ recognizedText }}
       <div class="date flex my-8">
         <label for="dream-date" class="block mb-2 font-medium">Dream Date</label>
         <input

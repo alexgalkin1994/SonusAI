@@ -2,12 +2,6 @@ import { ref } from 'vue'
 import { SpeechRecognition } from '@capacitor-community/speech-recognition'
 
 export default function useSpeechRecognition() {
-  const console = {
-    log: function (msg) {
-      alert(msg)
-    }
-  }
-
   const recognitionActive = ref(false)
   const recognizedText = ref('')
 
@@ -18,26 +12,18 @@ export default function useSpeechRecognition() {
   }
 
   const startRecognition = async () => {
-    console.log('startRecognition() called')
-
     SpeechRecognition.start({
       language: 'en-US',
-      prompt: 'Speak now',
-      popup: false,
-      partialResults: true
+      prompt: 'Say something',
+      partialResults: true,
+      popup: false
+    })
+
+    SpeechRecognition.addListener('partialResults', (data: any) => {
+      console.log('partialResults was fired ' + JSON.stringify(data.matches))
+      recognizedText.value = data.matches[0]
     })
   }
-
-  SpeechRecognition.addListener('partialResults', (data: any) => {
-    console.log(data.matches)
-    if (data.matches?.length > 0) {
-      recognizedText.value += data.matches[0]
-    }
-
-    if (data.value?.length > 0) {
-      recognizedText.value += data.value[0]
-    }
-  })
 
   const stopRecognition = async () => {
     SpeechRecognition.stop()
@@ -45,7 +31,6 @@ export default function useSpeechRecognition() {
 
   const toggleSpeechRecognition = () => {
     recognitionActive.value = !recognitionActive.value
-    console.log('hiwqehqwih    ' + recognitionActive.value)
 
     if (recognitionActive.value) {
       startRecognition()

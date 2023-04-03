@@ -9,11 +9,12 @@ export const useDreamsStore = defineStore('dreams', {
   state: (): State => ({ dreams: [] }),
 
   actions: {
-    async fetchDreams() {
+    async fetchDreams(): Promise<Dream[] | undefined> {
       const { data, error } = await supabase.from('dreams').select('*')
 
       if (error) {
         console.error('Error fetching dreams:', error)
+        return undefined
       } else {
         console.log('Fetched dreams:', data)
         return data
