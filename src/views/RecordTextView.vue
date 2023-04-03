@@ -24,7 +24,7 @@
         />
       </div>
       <button
-        type="submit"
+        @click="saveDream"
         class="w-full py-4 bg-primary hover:bg-blue-600 text-white font-bold rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
       >
         Save Dream
@@ -40,23 +40,45 @@ import useSpeechRecognition from '@/composables/useSpeechRecognition'
 import NavBar from '@/components/NavBar.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import IconMic from '@/components/icons/IconMic.vue'
+import supabase from '@/lib/supabaseClient'
+
+const user = ref()
+// TODO: implement user store
+const loadData = async () => {
+  const { data } = await supabase.auth.getUser()
+  user.value = data.user
+}
+loadData()
 
 const dream = reactive({
   description: '',
   date: new Date().toLocaleDateString('en-CA')
 })
 
-const imin = ref(false)
-
 const { recognizedText, recognitionActive, toggleSpeechRecognition } = useSpeechRecognition()
 
 watchEffect(() => {
-  imin.value = true
   dream.description = recognizedText.value
 })
 
-const saveDream = () => {
-  console.log('Saving dream...', dream)
+const saveDream = async () => {
+  const {
+    data: { user }
+  } = await supabase.auth.getUser()
+  const { data, error } = await supabase.from('dreams').insert({
+    ...dream,
+    title: dream.description.substring(0, 10),
+    tags: [],
+    interpretation: '',
+    moods: ['sad'],
+    user_id: user?.id
+  })
+
+  if (error) {
+    console.log('Error adding dream:', error.message)
+  } else {
+    console.log('Dream added successfully:', data)
+  }
 }
 </script>
 
