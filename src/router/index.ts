@@ -21,12 +21,14 @@ const router = createRouter({
     {
       path: '/journal',
       name: 'journal',
-      component: DreamJournalView
+      component: DreamJournalView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/record-text',
       name: 'record-text',
-      component: RecordTextView
+      component: RecordTextView,
+      meta: { requiresAuth: true }
     },
     {
       path: '/auth',
@@ -36,7 +38,8 @@ const router = createRouter({
     {
       path: '/dream-detail/:id',
       name: 'dream-detail',
-      component: DreamDetailView
+      component: DreamDetailView,
+      meta: { requiresAuth: true }
     }
   ]
 })
