@@ -6,7 +6,7 @@
       <span class="text-5xl text-white font-bold">Learn more about yourself with every dream.</span>
       <button
         @click="router.push({ name: 'auth' })"
-        class="text-white bg-primary min-w-full py-5 rounded-xl mt-8"
+        class="text-white bg-primary min-w-full py-5 rounded-xl my-8"
       >
         Login
       </button>
