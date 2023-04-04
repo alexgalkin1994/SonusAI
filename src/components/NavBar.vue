@@ -8,9 +8,9 @@
     </button>
     <button
       @click="router.push({ name: 'record-text' })"
-      class="bg-accent-1 w-20 h-20 flex justify-center items-center rounded-full -my-4"
+      class="bg-accent-1 w-20 h-20 flex justify-center items-center rounded-full -my-4 shadow-primary"
     >
-      <IconMic />
+      <IconPlus />
     </button>
     <button class="w-12 flex justify-center items-center">
       <IconPsychProfile />
@@ -27,7 +27,7 @@ import IconHome from './icons/IconHome.vue'
 import IconJournal from './icons/IconJournal.vue'
 import IconPsychProfile from './icons/IconPsychProfile.vue'
 import IconUser from './icons/IconUser.vue'
-import IconMic from './icons/IconMic.vue'
+import IconPlus from './icons/IconPlus.vue'
 
 const router = useRouter()
 </script>
