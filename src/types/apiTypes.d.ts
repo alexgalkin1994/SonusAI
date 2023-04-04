@@ -1,12 +1,13 @@
 export interface Dream {
-  id: number
-  userId: number
-  date: Date
+  id?: number
+  user_id: string | undefined
+  date: string
   title: string
   description: string
   tags: string[]
+  moods: string[]
   audioRecording?: Blob // Optional, if you decide to store audio recordings
   interpretation: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt?: string
+  updatedAt?: string
 }

@@ -41,6 +41,18 @@ export const useDreamsStore = defineStore('dreams', {
       if (dream) return dream
 
       return this.fetchDreamById(id)
+    },
+    async addDream(dream: Dream): Promise<Dream | undefined> {
+      const { data, error } = await supabase.from('dreams').insert(dream).select('*')
+      console.log('Dream data:', data)
+      if (error) {
+        console.log('Error adding dream:', error.message)
+        return undefined
+      } else {
+        console.log('Dream added successfully:', data[0])
+        this.dreams.push(data[0] as Dream)
+        return data[0] as Dream
+      }
     }
   }
 })

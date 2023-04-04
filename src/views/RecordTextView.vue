@@ -36,14 +36,18 @@
 
 <script setup lang="ts">
 import { reactive, ref, watchEffect } from 'vue'
+import type { Dream } from '@/types/apiTypes'
 import useSpeechRecognition from '@/composables/useSpeechRecognition'
 import NavBar from '@/components/NavBar.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import IconMic from '@/components/icons/IconMic.vue'
 import supabase from '@/lib/supabaseClient'
 import { useUserStore } from '@/stores/user'
+import { useDreamsStore } from '@/stores/dreamsStore'
+import router from '@/router'
 
 const userStore = useUserStore()
+const dreamsStore = useDreamsStore()
 
 const dream = reactive({
   description: '',
@@ -78,20 +82,22 @@ const saveDream = async () => {
     interpretationRes.data.interpretation as string
   )
 
-  const { data, error } = await supabase.from('dreams').insert({
+  const dreamWithInterpretation: Dream = {
     ...dream,
-    title: title,
-    tags: tags,
-    interpretation: interpretation,
+    title,
+    tags,
     moods: ['sad'],
-    user_id: userStore.user?.id
-  })
-
-  if (error) {
-    console.log('Error adding dream:', error.message)
-  } else {
-    console.log('Dream added successfully:', data)
+    user_id: userStore.user?.id,
+    interpretation
   }
+
+  const insertedDream = await dreamsStore.addDream(dreamWithInterpretation)
+  console.log('2', insertedDream)
+  router.push({
+    name: 'dream-detail',
+    params: { id: insertedDream?.id }
+  })
+  console.log('3', router)
 }
 </script>
 
