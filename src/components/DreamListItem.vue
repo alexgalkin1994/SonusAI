@@ -1,7 +1,7 @@
 <template>
   <div @click="viewDreamDetails">
     <div class="title flex items-center">
-      <span class="text-2xl font-bold mr-2">{{ dream.title }}</span>
+      <span class="text-2xl font-bold mr-2 mb-2">{{ dream.title }}</span>
       <!-- <span class="text-xs text-gray">{{ dream.date.toLocaleTimeString() }}</span> -->
     </div>
     <div class="text-sm line-clamp-3">{{ dream.description }}...</div>

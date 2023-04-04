@@ -34,7 +34,9 @@ const dreamsStore = useDreamsStore()
 const dream = ref<Dream>()
 
 const getDream = async () => {
-  dream.value = await dreamsStore.fetchDreamById(router.currentRoute.value.params.id as string)
+  dream.value = await dreamsStore.getDreamById(
+    parseInt(router.currentRoute.value.params.id as string, 10)
+  )
 }
 getDream()
 </script>

@@ -21,18 +21,24 @@ export const useDreamsStore = defineStore('dreams', {
         return undefined
       } else {
         console.log('Fetched dreams:', data)
+        this.dreams = data.reverse()
         return data
       }
     },
-    async fetchDreamById(id: string) {
+    async fetchDreamById(id: number) {
       const { data, error } = await supabase.from('dreams').select('*').eq('id', id).single()
-
       if (error) {
         console.error(`Error fetching dream with id ${id}:`, error)
       } else {
         console.log(`Fetched dream with id ${id}:`, data)
         return data
       }
+    },
+    async getDreamById(id: number) {
+      const dream = this.dreams.find((dream) => dream.id === id)
+      if (dream) return dream
+
+      return this.fetchDreamById(id)
     }
   }
 })
