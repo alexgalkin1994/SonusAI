@@ -11,7 +11,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/onboarding'
+      redirect: '/journal'
     },
     {
       path: '/onboarding',
@@ -51,6 +51,8 @@ router.beforeEach(async (to, from, next) => {
   } = await supabase.auth.getUser()
   if (requiresAuth && !user) {
     next('/auth')
+  } else if (to.path === '/auth' && user) {
+    next('/')
   } else {
     next()
   }
