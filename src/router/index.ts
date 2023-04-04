@@ -5,6 +5,7 @@ import DreamJournalView from '@/views/DreamJournalView.vue'
 import DreamDetailView from '@/views/DreamDetailView.vue'
 import RecordTextView from '@/views/RecordTextView.vue'
 import AuthView from '@/views/AuthView.vue'
+import { useUserStore } from '@/stores/user'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,13 +46,13 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
+  const userStore = useUserStore()
+
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth)
-  const {
-    data: { user }
-  } = await supabase.auth.getUser()
-  if (requiresAuth && !user) {
+
+  if (requiresAuth && !userStore.user) {
     next('/auth')
-  } else if (to.path === '/auth' && user) {
+  } else if (to.path === '/auth' && userStore.user) {
     next('/')
   } else {
     next()

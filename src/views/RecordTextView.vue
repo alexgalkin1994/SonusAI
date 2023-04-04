@@ -41,14 +41,9 @@ import NavBar from '@/components/NavBar.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import IconMic from '@/components/icons/IconMic.vue'
 import supabase from '@/lib/supabaseClient'
+import { useUserStore } from '@/stores/user'
 
-const user = ref()
-// TODO: implement user store
-const loadData = async () => {
-  const { data } = await supabase.auth.getUser()
-  user.value = data.user
-}
-loadData()
+const userStore = useUserStore()
 
 const dream = reactive({
   description: '',
@@ -61,7 +56,7 @@ watchEffect(() => {
   dream.description = recognizedText.value
 })
 
-const seperateGPTResponse = (response) => {
+const seperateGPTResponse = (response: string) => {
   const titleStart = response.indexOf('Title:') + 'Title:'.length
   const interpretationStart = response.indexOf('Interpretation:') + 'Interpretation:'.length
   const tagsStart = response.indexOf('Tags:') + 'Tags:'.length
@@ -75,15 +70,13 @@ const seperateGPTResponse = (response) => {
 }
 
 const saveDream = async () => {
-  const {
-    data: { user }
-  } = await supabase.auth.getUser()
-
   const interpretationRes = await supabase.functions.invoke('openai', {
     body: JSON.stringify({ query: dream.description })
   })
 
-  const { title, interpretation, tags } = seperateGPTResponse(interpretationRes.data.interpretation)
+  const { title, interpretation, tags } = seperateGPTResponse(
+    interpretationRes.data.interpretation as string
+  )
 
   const { data, error } = await supabase.from('dreams').insert({
     ...dream,
@@ -91,7 +84,7 @@ const saveDream = async () => {
     tags: tags,
     interpretation: interpretation,
     moods: ['sad'],
-    user_id: user?.id
+    user_id: userStore.user?.id
   })
 
   if (error) {

@@ -20,44 +20,26 @@
     >
       Login
     </button>
-    <button @click="signup">Sign Up</button>
+    <button @click="signUp">Sign Up</button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import supabase from '@/lib/supabaseClient'
 import router from '@/router'
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
 
 const email = ref('')
 const password = ref('')
 
 const login = async () => {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: email.value,
-    password: password.value
-  })
-
-  if (error) {
-    console.log('Error logging in:', error.message)
-  } else {
-    console.log('Logged in successfully:', data)
-  }
-
+  await userStore.signIn(email.value, password.value)
   router.push({ name: 'journal' })
-  console.log('router', router)
 }
 
-const signup = async () => {
-  const { data, error } = await supabase.auth.signUp({
-    email: email.value,
-    password: password.value
-  })
-
-  if (error) {
-    console.log('Error signing up:', error.message)
-  } else {
-    console.log('Signed up successfully:', data)
-  }
+const signUp = async () => {
+  userStore.signUp(email.value, password.value)
 }
 </script>

@@ -1,6 +1,7 @@
 import type { Dream } from './../types/apiTypes.d'
 import { defineStore } from 'pinia'
 import supabase from '@/lib/supabaseClient'
+import { useUserStore } from './user'
 
 interface State {
   dreams: Dream[]
@@ -10,11 +11,12 @@ export const useDreamsStore = defineStore('dreams', {
 
   actions: {
     async fetchDreams(): Promise<Dream[] | undefined> {
-      const {
-        data: { user }
-      } = await supabase.auth.getUser()
+      const userStore = useUserStore()
 
-      const { data, error } = await supabase.from('dreams').select('*').eq('user_id', user?.id)
+      const { data, error } = await supabase
+        .from('dreams')
+        .select('*')
+        .eq('user_id', userStore.user?.id)
 
       if (error) {
         console.error('Error fetching dreams:', error)
