@@ -26,6 +26,7 @@
     "@supabase/supabase-js": "^2.13.1",
     "@tailwindcss/line-clamp": "^0.4.4",
     "pinia": "^2.0.32",
+    "pinia-plugin-persistedstate": "^3.1.0",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
