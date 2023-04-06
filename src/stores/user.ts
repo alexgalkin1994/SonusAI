@@ -4,10 +4,12 @@ import type { User } from '@supabase/supabase-js'
 
 interface State {
   user: User | null
+  profile: any
 }
 export const useUserStore = defineStore('user', {
   state: (): State => ({
-    user: null
+    user: null,
+    profile: null
   }),
 
   actions: {
@@ -41,6 +43,7 @@ export const useUserStore = defineStore('user', {
       } else {
         console.log('Signed in:', user)
         this.user = user
+        await this.fetchUserProfile(user!.id)
         return user
       }
     },
@@ -59,6 +62,21 @@ export const useUserStore = defineStore('user', {
         console.log('Signed up:', user)
         this.user = user
         return user
+      }
+    },
+    async fetchUserProfile(userId: string) {
+      console.log('fetching user profile', userId)
+      const { data, error } = await supabase
+        .from('user_profiles')
+        .select('*')
+        .eq('user_id', userId)
+        .single()
+
+      console.log('data', data)
+      if (error) {
+        console.log('Error fetching user profile:', error.message)
+      } else {
+        this.profile = data
       }
     }
   },
