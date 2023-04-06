@@ -5,7 +5,7 @@
       <!-- <span class="text-xs text-gray">{{ dream.date.toLocaleTimeString() }}</span> -->
     </div>
     <div class="text-sm line-clamp-3">{{ dream.description }}...</div>
-    <div class="tags overflow-x-scroll whitespace-nowrap text-gray">
+    <div class="tags overflow-x-auto whitespace-nowrap text-gray">
       <template v-for="tag in dream.tags" :key="tag">
         <span class="mr-2 whitespace-nowrap text-xs"> #{{ tag }} </span>
       </template>
