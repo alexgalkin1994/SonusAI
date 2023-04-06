@@ -7,7 +7,7 @@
       <div class="text-5xl mb-8">{{ dream.title }}</div>
       <div class="text-3xl mb-2">Description:</div>
       <div class="mb-2">{{ dream.description }}</div>
-      <div class="tags overflow-x-scroll whitespace-nowrap text-gray mb-8">
+      <div class="tags overflow-x-auto whitespace-nowrap text-gray mb-8">
         <template v-for="tag in dream.tags" :key="tag">
           <span class="mr-2 whitespace-nowrap text-xs"> #{{ tag }} </span>
         </template>

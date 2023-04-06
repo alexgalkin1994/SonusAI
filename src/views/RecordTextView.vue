@@ -8,11 +8,10 @@
         placeholder="Describe your dream..."
         class="w-full h-40 p-2 mb-4 bg-midnight border rounded shadow-sm focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-200"
       ></textarea>
-      <button @click="toggleSpeechRecognition" class="flex bg-accent-2 py-2 px-4 rounded-lg mb-2">
+      <button @click="toggleSpeechRecognition" class="hidden bg-accent-2 py-2 px-4 rounded-lg mb-2">
         <IconMic /> {{ recognitionActive ? 'Stop' : 'Start' }} Voice Input
       </button>
 
-      recognized text: {{ recognizedText }}
       <div class="date flex my-8">
         <label for="dream-date" class="block mb-2 font-medium">Dream Date</label>
         <input
@@ -35,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, watchEffect } from 'vue'
+import { reactive, watchEffect } from 'vue'
 import type { Dream } from '@/types/apiTypes'
 import useSpeechRecognition from '@/composables/useSpeechRecognition'
 import NavBar from '@/components/NavBar.vue'
