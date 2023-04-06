@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import supabase from '@/lib/supabaseClient'
 import OnboardingView from '@/views/OnboardingView.vue'
 import DreamJournalView from '@/views/DreamJournalView.vue'
 import DreamDetailView from '@/views/DreamDetailView.vue'
 import RecordTextView from '@/views/RecordTextView.vue'
 import AuthView from '@/views/AuthView.vue'
 import { useUserStore } from '@/stores/user'
+import ProfileView from '@/views/ProfileView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,6 +40,12 @@ const router = createRouter({
       path: '/dream-detail/:id',
       name: 'dream-detail',
       component: DreamDetailView,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/profile/:id',
+      name: 'profile',
+      component: ProfileView,
       meta: { requiresAuth: true }
     }
   ]
